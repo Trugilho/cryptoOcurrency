@@ -1,0 +1,93 @@
+@model TickerPropertyModel
+
+<form action="GetExchanges" method="GET">
+ <select name="from">
+    <option value="" selected="selected">Trade</option>
+    <option value="usd" >USD</option>
+    <option value="btc" >BitCoin</option>
+    <option value="bch" >BitCoin Cash</option>
+    <option value="eth"  >Ethereum</option>
+    <option value="etc" >Ethereum Classic</option>
+    <option value="xmr" >Monero</option>
+    <option value="zec" >Zcash</option>
+</select>
+ <select name="to">
+    <option value="" selected="selected">To</option>
+    <option value="usd" >USD</option>
+    <option value="btc" >BitCoin</option>
+    <option value="bch" >BitCoin Cash</option>
+    <option value="eth"  >Ethereum</option>
+    <option value="etc" >Ethereum Classic</option>
+    <option value="xmr" >Monero</option>
+    <option value="zec" >Zcash</option>
+</select>
+ <input type="submit" value = "go" />
+</form> 
+
+<table width = "100%">
+    <tr>
+      <td>Request Time   </td>
+      <td>Base     </td>
+      <td>Target     </td>
+      <td>Price   </td>
+      <td>Volume  </td>
+    </tr>
+    <tr>  
+      <span hidden id = "time">@Model.Timestamp  </span>
+      <td><span id='date_value_timestamp'></span></td>
+      <td>@Model.Ticker.Base   </td>
+      <td>@Model.Ticker.Target</td>
+      <td>@Model.Ticker.Price</td>
+      <td>@Model.Ticker.Volume</td>
+    </tr> 
+</table>
+<table id = "table" border = "1" width = "100%">
+    <tr>
+        <th>Market</th>
+        <th>Price</th>
+        <th>Volume</th>
+    </tr>
+
+@foreach (var item in @Model.Ticker.Markets)
+        {
+
+            <tr>
+                <td>@item.Market</td>
+                <td>@item.Price</td>
+                <td>@item.Volume</td> 
+            </tr>
+            
+        } 
+</table>
+
+
+<script>
+    var table = document.getElementById("table");
+    getMax();
+    checkDateValue();
+    function getMax()
+    {
+        var maxVal, maxIndex;
+        for(var i = 1; i<table.rows.length; i++)
+        {
+            if(i ===1){
+                maxVal = table.rows[i].cells[1].innerHTML;
+                maxIndex = table.rows[i].rowIndex;
+            }else if(maxVal < table.rows[i].cells[1].innerHTML)
+            {
+                maxVal = table.rows[i].cells[1].innerHTML;
+                maxIndex = table.rows[i].rowIndex;
+            }
+        }
+        console.log(maxVal);
+        table.rows[maxIndex].style.background = "green";
+    }
+    function checkDateValue(){
+        var date = (new Date((document.getElementById('time').innerHTML)*1000));  
+        document.getElementById('date_value_timestamp').innerHTML  = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear() + ' ' + ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
+        console.log((document.getElementById('time').innerHTML));
+        
+    }
+
+</script>
+
