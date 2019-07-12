@@ -12292,11 +12292,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/trugilho/modal/cryptoOcurrencyModalFront/cryptoOcurrencyModalFront.csproj",
+      "projectUniqueName": "/home/trugilho/cryptoOcurrency/modal/cryptoOcurrencyModalFront/cryptoOcurrencyModalFront.csproj",
       "projectName": "cryptoOcurrencyModalFront",
-      "projectPath": "/home/trugilho/modal/cryptoOcurrencyModalFront/cryptoOcurrencyModalFront.csproj",
+      "projectPath": "/home/trugilho/cryptoOcurrency/modal/cryptoOcurrencyModalFront/cryptoOcurrencyModalFront.csproj",
       "packagesPath": "/home/trugilho/.nuget/packages/",
-      "outputPath": "/home/trugilho/modal/cryptoOcurrencyModalFront/obj/",
+      "outputPath": "/home/trugilho/cryptoOcurrency/modal/cryptoOcurrencyModalFront/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
